@@ -26,9 +26,9 @@ java -cp target/gen-json-0.1.0-SNAPSHOT-standalone.jar clojure.main -m gen-json.
 ```clojure
 {
   :data {
-    :uuid   (gen/uuid)
+    :uuid   (str (gen/uuid))
     :num    (+ 40 (rand-int 60))
-    :date   (gen/date)
+    :date   (str (gen/date))
     :letter (gen/one-of "a" "b" "c" "d")
     :bool   (gen/boolean)
     :short  (gen/short)
@@ -37,6 +37,12 @@ java -cp target/gen-json-0.1.0-SNAPSHOT-standalone.jar clojure.main -m gen-json.
     :string (gen/string)
     :long2  (gen/long)
     :ten    10
+    :more   {
+      :bool (gen/boolean)
+      :more {
+        :int (gen/int)
+      }
+    }
   }
   :output-file "hello.json"
   :lines 10
@@ -46,16 +52,16 @@ java -cp target/gen-json-0.1.0-SNAPSHOT-standalone.jar clojure.main -m gen-json.
 #### Example output in `hello.json`
 
 ```json
-{"date":"Thu Jan 07 17:11:28 EST 1982","string":"=:_uC:LjwIgD0X3n0W","long2":"-4588066762141701118","long1":"-7912908803613548926","bool":"true","int":"-1758082576","uuid":"cc7229ce-080b-069b-5108-46b65ba0a3f3","num":"90","ten":"10","letter":"d","short":"-32043"}
-{"date":"Sun Nov 25 14:26:20 EST 1979","string":"Rr4X1C,I]bzT#$jh[@{MT g[&@;.7D*-;0;j^~ka(k_LK9L,m|bE:ZBB|1w:lk+Etv;y<^8F}ue !<UHrM='t^cX- \\nIyt,a33~|O(Pqi^,F!QIh]HR7#.Xfg|u","long2":"-6834366834248567851","long1":"8221944818177641515","bool":"true","int":"-1701421671","uuid":"2c588417-7537-a68c-e5cb-54862f653a5b","num":"76","ten":"10","letter":"c","short":"22771"}
-{"date":"Sun Feb 27 09:59:33 EST 2011","string":"$Y\/MVQc`pj;CP;|V+ITVeXmsC]o)vZW\/~XjQ'O0Oa^","long2":"6619736205161434398","long1":"-8284882916436724031","bool":"true","int":"-1687429471","uuid":"3af3bb56-2d50-c1da-048e-fcd3b66ca153","num":"96","ten":"10","letter":"c","short":"20955"}
-{"date":"Thu Sep 25 21:23:19 EDT 1986","string":"<","long2":"4332977493309597071","long1":"8312423081133895108","bool":"false","int":"598941085","uuid":"90d97aa1-2d42-c3b9-8441-7c0d0db8dc7c","num":"58","ten":"10","letter":"b","short":"-15467"}
-{"date":"Thu Jul 28 12:00:53 EDT 2039","string":"EK9MGW\/8P7\\@^m}Pz","long2":"4925782288543390495","long1":"-6572922273250295796","bool":"true","int":"56921189","uuid":"4f716f2e-beda-fc44-6234-6ae921cb4453","num":"65","ten":"10","letter":"b","short":"-15491"}
-{"date":"Thu Oct 30 16:16:07 EST 1975","string":"oV!'@de|vKu=T^G01KQv+eVbtV^*d@HJ67)y%`i^e-72c#mB u5D1t22.Yz;[)=Xb8CDv3r=`Wr|2ewk5yM|5r5mp\/Ecl'IUF]\"w;LLm.xN*1k9-RX5or_R2]??W;A<CPC]2+xC]Ld^5\\{(9HozW;|lPpfO6s\/'p[Y5ybAW-,L\\C{|*a9K9x_`-;9jI(Bp~^I?M=g Mm;VG\\{%I@X<mTskkM?-1o$|tdb)9","long2":"5975282525948902333","long1":"-3349173856144723305","bool":"false","int":"166295501","uuid":"13b74bc5-1abd-7516-cdf9-f16d82c4f446","num":"94","ten":"10","letter":"d","short":"5170"}
-{"date":"Mon Nov 24 07:55:45 EST 2008","string":"-Q]5noa-}QUub^S,uCF%[-8hA9ibXUdbb~oOjCencz\"OfDZ]am","long2":"7202613045196186750","long1":"-1501843754440404881","bool":"false","int":"406904465","uuid":"af4fe872-a4bf-f8f9-bf78-e4cedb0b5a40","num":"51","ten":"10","letter":"b","short":"-26359"}
-{"date":"Mon Jun 30 17:39:38 EDT 2098","string":"OF<2s`E5Qo\/K#;PvNEld-NxRO3\"n(}X<Rpb1ivmYt ","long2":"6976632513619112205","long1":"-1815641401476724878","bool":"true","int":"1405945853","uuid":"7bdcc7a4-293c-675c-9f69-0ebbc3628055","num":"41","ten":"10","letter":"a","short":"20534"}
-{"date":"Mon Apr 04 00:12:07 EDT 2005","string":"KN-Pvzu0@?.lut4,*p9**_Fbwbn:V6e3_JEnH[\/EGhCvzQ1>5?(|","long2":"-8003117795686964107","long1":"6390016758477649625","bool":"false","int":"-194695370","uuid":"49e2d9d3-6579-ece3-4986-7fbfd5757f6b","num":"81","ten":"10","letter":"a","short":"-17555"}
-{"date":"Fri Apr 06 10:58:38 EDT 2012","string":"#Ld!}{?6PB`),~ yGCt>p7[O[#w8S~=sK6w@mUf6hJc9$:K6v|#","long2":"-3385014592132833671","long1":"-7145984928441672239","bool":"true","int":"-770806166","uuid":"e4f66655-ed25-d87a-bff3-cec12c02ea1f","num":"76","ten":"10","letter":"d","short":"-7583"}
+{"date":"Thu Jan 07 17:11:28 EST 1982","string":"=:_uC:LjwIgD0X3n0W","long2":-4588066762141701118,"long1":-7912908803613548926,"bool":true,"more":{"bool":false,"more":{"int":1084521971}},"int":-2012543340,"uuid":"5ba0a3f3-32f7-02b1-d15b-23ed02d53e28","num":69,"ten":10,"letter":"c","short":31066}
+{"date":"Tue Oct 05 23:35:32 EDT 1982","string":";zm\\CBIKLLn.oK:21rNG\\b=VCrlZCbv2l[L=","long2":-8487172994898555456,"long1":-6731013670330063931,"bool":false,"more":{"bool":false,"more":{"int":-11480910}},"int":-2030170198,"uuid":"09570ca0-77fa-de46-7bdd-30f57598e44a","num":88,"ten":10,"letter":"b","short":-6832}
+{"date":"Mon May 01 08:01:01 EDT 1972","string":"]itX|'i:uCH?=J)f0l-(\"T:{u@!lQoWaT*Wu[Duo8{EV8n^","long2":-7118474111917486870,"long1":9005652045203794402,"bool":false,"more":{"bool":false,"more":{"int":1022123327}},"int":1526265982,"uuid":"56f9aa9c-814a-a5fa-c20e-3ef017fe82f0","num":41,"ten":10,"letter":"b","short":561}
+{"date":"Sun Aug 12 16:12:18 EDT 1979","string":"qb\/ldknp},ZS.RT?dD!))0uGp?H$Y\/MVQc`pj;CP;|V+ITVe","long2":-7451485235432246024,"long1":-3356282887119310997,"bool":true,"more":{"bool":true,"more":{"int":-546209933}},"int":628579426,"uuid":"d71037ea-9732-2a09-18cb-b615420a8641","num":50,"ten":10,"letter":"a","short":7433}
+{"date":"Mon Mar 05 21:48:53 EST 1990","string":"~XjQ'O0Oa^BThQ0cSK@#kb<\\UQR9\/bEK9MGW\/8P7\\@^m}Pz9]yXf,a-S&d`oM?lj;RH{ynms@qGYx{[0H%E&)w3UU'","long2":7690126608758977573,"long1":-8113911624402688253,"bool":false,"more":{"bool":false,"more":{"int":476037419}},"int":1805510065,"uuid":"08a12ee7-a852-94d4-2dee-e42bbc9711cf","num":58,"ten":10,"letter":"a","short":15828}
+{"date":"Sat May 12 21:39:12 EDT 2074","string":"\\e\"mDpPm}T!.,`awFsx-K.f9#sRt\"K=.[K`VZccQa73W[sS|-?p_<6k]","long2":5888756209027563785,"long1":3179601064751172392,"bool":false,"more":{"bool":true,"more":{"int":644532041}},"int":740672507,"uuid":"9a879aa7-7ca3-a060-378f-5f5f1bcf284d","num":93,"ten":10,"letter":"b","short":10257}
+{"date":"Mon Jun 02 08:45:03 EDT 2031","string":"1J3U-.lHU;u%EMtN?F $zI-#X:5fP%\\P}n*WfUQ@h_6[ryo9Vz dnvj(b!_rwRqE {+V>`lNhkO:c1=@+eN:{Dd>|e.Kd5D29ZM~,JBP=*|e24U@E_\/tRBS'l\"VAB-Q]5noa-}QUub^S,uCF%[-8hA9ibXUdbb~oOjCencz\"OfDZ]amEwD:]q%0d-iiYxZaRpx0[.lQH^39t>Z\/E xT,+!j3kFIqm#npDGq`pnM[hmE@KN-Pvzu0@?.lut","long2":3930309226770985576,"long1":2450511670853034136,"bool":false,"more":{"bool":false,"more":{"int":1478422842}},"int":-990660663,"uuid":"1d0c6a63-ed7f-70e0-1be7-d604e5c94c1e","num":91,"ten":10,"letter":"b","short":-6003}
+{"date":"Sun Aug 07 15:42:40 EDT 1983","string":"bn:","long2":-7773418264728399811,"long1":4318048165107432018,"bool":true,"more":{"bool":true,"more":{"int":-1285595627}},"int":701484599,"uuid":"73501c39-9fb8-23e3-6482-017eb4c228c7","num":97,"ten":10,"letter":"a","short":-4637}
+{"date":"Thu Jul 09 16:44:09 EDT 1987","string":"EGhCvzQ1>5?(|U@>pEo|P\"S=D`\\-_C[>U7~GXV(4&8 HmrKzq?W\\p9yb7L44)cC\"xt3$]g`Lb(eV>tg1D)u!Ey^[VN","long2":-7479297482452105886,"long1":3706550385263427884,"bool":true,"more":{"bool":false,"more":{"int":1581996064}},"int":412796518,"uuid":"52890ca4-cae1-30a5-c3b9-0e3afd784e14","num":63,"ten":10,"letter":"a","short":23845}
+{"date":"Wed Dec 05 00:07:28 EST 2029","string":"1g35w)","long2":5669492953851700171,"long1":7845584124940836124,"bool":true,"more":{"bool":true,"more":{"int":-693617079}},"int":-1251342910,"uuid":"b5c0d0ff-d1f2-038d-daf6-56dcb82d8b10","num":56,"ten":10,"letter":"c","short":-23831}
 ```
 
 ### Create other config files based on example.edn

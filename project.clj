@@ -10,7 +10,6 @@
     [org.clojure/data.json       "0.2.3"]
     [org.clojure/data.generators "0.1.2"]
     [org.clojure/tools.reader    "0.7.5"]
-    [org.clojure/algo.generic    "0.1.1"]
     [clj-time                    "0.4.5"]
     [me.raynes/fs                "1.4.0"]]
   :main gen-json.core)

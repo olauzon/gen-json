@@ -1,9 +1,9 @@
 {
   ;; see https://github.com/clojure/data.generators/blob/master/src/main/clojure/clojure/data/generators.clj
   :data {
-    :uuid   (gen/uuid)
+    :uuid   (str (gen/uuid))
     :num    (+ 40 (rand-int 60))
-    :date   (gen/date)
+    :date   (str (gen/date))
     :letter (gen/one-of "a" "b" "c" "d")
     :bool   (gen/boolean)
     :short  (gen/short)
@@ -12,6 +12,12 @@
     :string (gen/string)
     :long2  (gen/long)
     :ten    10
+    :more   {
+      :bool (gen/boolean)
+      :more {
+        :int (gen/int)
+      }
+    }
   }
   :output-file "hello.json"
   :lines 10

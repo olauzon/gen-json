@@ -1,14 +1,13 @@
 (ns gen-json.core
-  (require [clojure.string               :as string]
-           [clojure.core.memoize         :as memo]
-           [clojure.java.io              :as io]
-           [clojure.data.csv             :as csv]
-           [clojure.data.json            :as json]
-           [clojure.data.generators      :as gen]
-           [clj-time.format              :as tf]
-           [clojure.tools.reader.edn     :as edn]
-           [me.raynes.fs                 :as fs]
-           [clojure.algo.generic.functor :as fun])
+  (require [clojure.string           :as string]
+           [clojure.core.memoize     :as memo]
+           [clojure.java.io          :as io]
+           [clojure.data.csv         :as csv]
+           [clojure.data.json        :as json]
+           [clojure.data.generators  :as gen]
+           [clj-time.format          :as tf]
+           [clojure.tools.reader.edn :as edn]
+           [me.raynes.fs             :as fs])
   (use clojure.java.io))
 
 (def file-path
@@ -36,7 +35,7 @@
 
 (defn data
   []
-  (fun/fmap str (eval ((config) :data))))
+  (eval ((config) :data)))
 
 (defn output-file
   []
