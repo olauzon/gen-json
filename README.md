@@ -9,16 +9,10 @@ A Clojure utility for generating "random" JSON objects.
 Usage
 -----
 
-### Build uberjar
-
-```bash
-lein uberjar
-```
-
 ### Write 10 randomly generated JSON objects to hello.json
 
 ```bash
-java -cp target/gen-json-0.1.0-SNAPSHOT-standalone.jar clojure.main -m gen-json.core example.edn
+lein run example.edn
 ```
 
 #### Example config in `example.edn`
@@ -44,12 +38,12 @@ java -cp target/gen-json-0.1.0-SNAPSHOT-standalone.jar clojure.main -m gen-json.
       }
     }
   }
-  :output-file "hello.json"
+  :output-file "example.json"
   :lines 10
 }
 ```
 
-#### Example output in `hello.json`
+#### Example output in `example.json`
 
 ```json
 {"date":"Thu Jan 07 17:11:28 EST 1982","string":"=:_uC:LjwIgD0X3n0W","long2":-4588066762141701118,"long1":-7912908803613548926,"bool":true,"more":{"bool":false,"more":{"int":1084521971}},"int":-2012543340,"uuid":"5ba0a3f3-32f7-02b1-d15b-23ed02d53e28","num":69,"ten":10,"letter":"c","short":31066}
@@ -69,7 +63,6 @@ java -cp target/gen-json-0.1.0-SNAPSHOT-standalone.jar clojure.main -m gen-json.
 License
 -------
 
-Copyright ©2013 Olivier Lauzon
+Copyright © 2013 Olivier Lauzon
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the Eclipse Public License.

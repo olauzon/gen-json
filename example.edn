@@ -19,6 +19,6 @@
       }
     }
   }
-  :output-file "hello.json"
+  :output-file "example.json"
   :lines 10
 }
