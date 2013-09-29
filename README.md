@@ -1,5 +1,5 @@
-gen-json
-========
+`gen-json`
+==========
 
 A Clojure utility for generating "random" JSON objects.
 
@@ -9,7 +9,7 @@ A Clojure utility for generating "random" JSON objects.
 Usage
 -----
 
-### Write 10 randomly generated JSON objects to hello.json
+### Write 10 randomly generated JSON objects
 
 ```bash
 lein run example.edn
